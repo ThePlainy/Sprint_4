@@ -1,12 +1,20 @@
-package samokatpages;
+package scooterpages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import util.Constants;
 
+import java.time.Duration;
 
 public class OrderPage {
     private WebDriver driver;
+
+    public OrderPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     //Поле имя
     private By nameField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(1) > input");
@@ -19,7 +27,6 @@ public class OrderPage {
 
     //Поле выбора станции метро
     private By metroField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(4) > div > div > input");
-    //#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(4) > div > div > div.select-search__select
 
     //Поле телефона
     private By phoneNumberField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(5) > input");
@@ -29,7 +36,7 @@ public class OrderPage {
 
     //Поле дня доставки
     private By deliveryDateField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div.Order_MixedDatePicker__3qiay > div.react-datepicker-wrapper > div > input");
-
+    private By deliveryDateClickable = By.xpath(".//div[@class='react-datepicker__week']/*[@tabindex='0']");
     //Поле срока аренды и его дроп
     private By rentDurationField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div.Dropdown-root");
 
@@ -48,6 +55,7 @@ public class OrderPage {
 
     //Ввод имени
     public void setName (String name){
+        new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(nameField));
         driver.findElement(nameField).sendKeys(name);
     }
 
@@ -64,7 +72,8 @@ public class OrderPage {
     //Выбор станции метро
     public void setMetro (String metro){
         driver.findElement(metroField).sendKeys(metro);
-        driver.findElement(By.xpath(".//*[text()='Черкизовская']")).click();
+        String newMetroSelector = ".//*[text()='"+metro+"']";
+        driver.findElement(By.xpath(newMetroSelector)).click();
     }
 
     //Ввод телефона
@@ -79,12 +88,14 @@ public class OrderPage {
 
     //Ввод дня доставки
     public void setDeliveryDate (String deliveryDate){
+        new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(deliveryDateField));
         driver.findElement(deliveryDateField).sendKeys(deliveryDate);
+        driver.findElement(deliveryDateClickable).click();
     }
 
     //Ввод срока аренды
-    public void setDuration (int dropdownChoiceNumber){
-        String dropdownChoice = "#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div.Dropdown-root.is-open > div.Dropdown-menu > div:nth-child("+dropdownChoiceNumber+")0";
+    public void setDuration (String durationInDays){
+        String dropdownChoice = "#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div.Dropdown-root.is-open > div.Dropdown-menu > div:nth-child("+durationInDays+")";
         By rentDurationFieldDropdown = By.cssSelector(dropdownChoice);
         driver.findElement(rentDurationField).click();
         driver.findElement(rentDurationFieldDropdown).click();
@@ -100,8 +111,15 @@ public class OrderPage {
         driver.findElement(confirmOrderButton).click();
     }
 
+    //Нажатие на кнопку подтверждения заказа
+    public void yesOrderButtonClick(){
+        new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(yesOrderButton));
+        driver.findElement(yesOrderButton).click();
+    }
+
     //Проверка успешного заказа
     public void checkOrderConfirmation(){
+        new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(orderConfirmation));
         Assert.assertTrue((driver.findElement(orderConfirmation)).isDisplayed());
     }
 
