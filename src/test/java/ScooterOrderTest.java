@@ -4,8 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import scooterpages.DriverFactory;
 import scooterpages.MainPage;
 import scooterpages.OrderPage;
 import util.Constants;
@@ -44,8 +43,8 @@ public class ScooterOrderTest {
 
     @Before
     public void startUp(){
-        if (browser.equals(Constants.CHROME)) {driver = new ChromeDriver();}
-        if (browser.equals(Constants.FIREFOX)) {driver = new FirefoxDriver();}
+        DriverFactory objDriverFactory = new DriverFactory();
+        driver = objDriverFactory.driverForSpecificBrowser(browser);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_WAIT));
     }
 
@@ -88,7 +87,7 @@ public class ScooterOrderTest {
     }
 
     @After
-    public void tearDown(){
+    public void teardown(){
         driver.quit();
     }
 
