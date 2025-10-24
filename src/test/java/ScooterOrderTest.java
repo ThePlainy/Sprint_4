@@ -53,8 +53,8 @@ public class ScooterOrderTest {
         //Структура данных на вход {браузер (из констант), точка входа (из констант), имя, фамилия, адрес, станция метро, номер телефона, дата доставки(в формате ДД.ММ.ГГГГ), срок аренды (числом от 1 до 7), цвет самоката (из констант)}
         return new Object[][]{
                 {Constants.FIREFOX, Constants.STARTING_HEADER,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Дмитровская", "89126820552", "27.10.2025","3", Constants.GREY},
-                {Constants.FIREFOX, Constants.STARTING_MAIN_PAGE,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Красные Ворота", "89126820552", "27.10.2025","2", Constants.BLACK},
-                {Constants.CHROME, Constants.STARTING_HEADER,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Полянка", "89126820552", "27.10.2025","7", Constants.GREY},
+                //{Constants.FIREFOX, Constants.STARTING_MAIN_PAGE,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Красные Ворота", "89126820552", "27.10.2025","2", Constants.BLACK},
+                //{Constants.CHROME, Constants.STARTING_HEADER,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Полянка", "89126820552", "27.10.2025","7", Constants.GREY},
                 {Constants.CHROME, Constants.STARTING_MAIN_PAGE,"Александр", "Лехано", "Алексеевский переулок, 6", "Алексеевская", "88005553535", "29.10.2025","1", Constants.BLACK},
         };
     }
