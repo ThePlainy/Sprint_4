@@ -10,48 +10,48 @@ import util.Constants;
 import java.time.Duration;
 
 public class OrderPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public OrderPage(WebDriver driver) {
         this.driver = driver;
     }
 
     //Поле имя
-    private By nameField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(1) > input");
+    private final By nameField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(1) > input");
 
     //Поле фамилия
-    private By surnameField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(2) > input");
+    private final By surnameField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(2) > input");
 
     //Поле адреса
-    private By addressField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(3) > input");
+    private final By addressField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(3) > input");
 
     //Поле выбора станции метро
-    private By metroField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(4) > div > div > input");
+    private final By metroField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(4) > div > div > input");
 
     //Поле телефона
-    private By phoneNumberField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(5) > input");
+    private final By phoneNumberField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div:nth-child(5) > input");
 
     //Кнопка Далее
-    private By nextButtonFirstForm = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_NextButton__1_rCA > button");
+    private final By nextButtonFirstForm = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_NextButton__1_rCA > button");
 
-    //Поле дня доставки
-    private By deliveryDateField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div.Order_MixedDatePicker__3qiay > div.react-datepicker-wrapper > div > input");
-    private By deliveryDateClickable = By.xpath(".//div[@class='react-datepicker__week']/*[@tabindex='0']");
-    //Поле срока аренды и его дроп
-    private By rentDurationField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div.Dropdown-root");
+    //Поле дня доставки и его дроп
+    private final By deliveryDateField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div.Order_MixedDatePicker__3qiay > div.react-datepicker-wrapper > div > input");
+    private final By deliveryDateClickable = By.xpath(".//div[@class='react-datepicker__week']/*[@tabindex='0']");
 
-    //Чекбокс цвета самоката
-    //private final String colour;
+    //Поле срока аренды
+    private final By rentDurationField = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Form__17u6u > div.Dropdown-root");
+
+    //Чекбокс цвета самоката - удалено ввиду передачи непосредственно селектора в метод в параметризованном тесте
     //private By productColour = By.cssSelector(colour);
 
     //Кнопка Заказать
-    private By confirmOrderButton = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Buttons__1xGrp > button:nth-child(2)");
+    private final By confirmOrderButton = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Buttons__1xGrp > button:nth-child(2)");
 
     //Кнопка Да попапа подтверждения
-    private By yesOrderButton = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Modal__YZ-d3 > div.Order_Buttons__1xGrp > button:nth-child(2)");
+    private final By yesOrderButton = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Modal__YZ-d3 > div.Order_Buttons__1xGrp > button:nth-child(2)");
 
     //Плашка "Заказ оформлен"
-    private By orderConfirmation = By.cssSelector(".Order_ModalHeader__3FDaJ");
+    private final By orderConfirmation = By.cssSelector(".Order_ModalHeader__3FDaJ");
 
     //Ввод имени
     public void setName (String name){

@@ -65,22 +65,35 @@ public class ScooterOrderTest {
         //Переход на страницу тестового приложения
         driver.get(Constants.SCOOTER_MAIN_PAGE);
 
-        //Создаем объект класса
+        //Создаем объект класса главной страницы
         MainPage objMainPage = new MainPage(driver);
-
+        //Переход в форму
         objMainPage.orderButtonClick(startButton);
+        //Создание объекта класса страницы формы
         OrderPage objOrderPage = new OrderPage(driver);
+        //Заполнение имени
         objOrderPage.setName(name);
+        //Заполнение фамилии
         objOrderPage.setSurname(surname);
+        //Заполнение адреса
         objOrderPage.setAddress(address);
+        //Заполнение метро
         objOrderPage.setMetro(metro);
+        //Заполнение номера телефона
         objOrderPage.setPhoneNumber(phoneNumber);
+        //Нажатие первой кнопки подтверждения
         objOrderPage.nextButtonFirstFormClick();
+        //Заполнение даты
         objOrderPage.setDeliveryDate(deliveryDate);
+        //Заполнение длительности
         objOrderPage.setDuration(durationInDays);
+        //Выбор цвета
         objOrderPage.setColour(colour);
+        //Нажатие второй кнопки подтверждения
         objOrderPage.confirmOrderButtonClick();
+        //Нажатие третьей кнопки подтверждения
         objOrderPage.yesOrderButtonClick();
+        //Проверка сообщения о заказе
         objOrderPage.checkOrderConfirmation();
 
 
