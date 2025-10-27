@@ -17,9 +17,9 @@ public class MainPage {
     }
 
     //Кнопка Заказать на главной странице
-    private final By mainOrderButton = By.cssSelector("#root > div > div > div.Home_ThirdPart__LSTEE > div.Home_RoadMap__2tal_ > div.Home_FinishButton__1_cWm > button");
+    private final By mainOrderButton = By.xpath(".//div[@class='Home_FinishButton__1_cWm']//button[text()='Заказать']") ;
     //Кнопка Заказать в хедере
-    private final By headerOrderButton = By.cssSelector("#root > div > div.Home_HomePage__ZXKIX > div.Header_Header__214zg > div.Header_Nav__AGCXC > button.Button_Button__ra12g");
+    private final By headerOrderButton = By.xpath(".//div[@class='Header_Nav__AGCXC']//button[@class='Button_Button__ra12g']");
     //выпадающее меню FaQ
     private final By faqAccordion = By.cssSelector(".Home_FAQ__3uVm4");
 
