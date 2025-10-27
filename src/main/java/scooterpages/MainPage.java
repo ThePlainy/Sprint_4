@@ -1,6 +1,5 @@
 package scooterpages;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -38,11 +37,11 @@ public class MainPage {
     }
 
     //Сверка ответа на FAQ
-    public void isFAQAnswerRight(String answerInQuestion){
+    public String getFAQAnswer(){
         String questionId = driver.findElement(By.cssSelector("div[aria-expanded = 'true']")).getAttribute("id");
         String answerIdSelector = "#accordion__panel-"+questionId.substring(19);
         new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(answerIdSelector)));
-        Assert.assertEquals(answerInQuestion,driver.findElement(By.cssSelector(answerIdSelector)).getText());
+        return driver.findElement(By.cssSelector(answerIdSelector)).getText();
     }
 
     //Нажатие на кнопку заказать на главной странице

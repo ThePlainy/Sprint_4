@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,7 +57,7 @@ public class FAQTextIsRightTest {
         //Кликаем по нужному вопросу
         objMainPage.faqClick(questionInQuestion);
         //Проверяем открывшийся ответ
-        objMainPage.isFAQAnswerRight(answerInQuestion);
+        Assert.assertEquals(answerInQuestion, objMainPage.getFAQAnswer());
     }
 
     @After

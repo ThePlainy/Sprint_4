@@ -2,7 +2,6 @@ package scooterpages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.Constants;
@@ -48,10 +47,10 @@ public class OrderPage {
     private final By confirmOrderButton = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Buttons__1xGrp > button:nth-child(2)");
 
     //Кнопка Да попапа подтверждения
-    private final By yesOrderButton = By.cssSelector("#root > div > div.Order_Content__bmtHS > div.Order_Modal__YZ-d3 > div.Order_Buttons__1xGrp > button:nth-child(2)");
+    private final By yesOrderButton = By.xpath(".//div[@class='Order_Modal__YZ-d3']//button[text() = 'Да']");
 
-    //Плашка "Заказ оформлен"
-    private final By orderConfirmation = By.cssSelector(".Order_ModalHeader__3FDaJ");
+    //Заголовок попапа
+    private final By popupTitle = By.cssSelector(".Order_ModalHeader__3FDaJ");
 
     //Ввод имени
     public void setName (String name){
@@ -117,10 +116,10 @@ public class OrderPage {
         driver.findElement(yesOrderButton).click();
     }
 
-    //Проверка успешного заказа
-    public void checkOrderConfirmation(){
-        new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(orderConfirmation));
-        Assert.assertTrue((driver.findElement(orderConfirmation)).isDisplayed());
+    //Получение текста заголовка с попапа
+    public String getPopupTitle(){
+        new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT)).until(ExpectedConditions.textToBePresentInElementLocated(popupTitle, Constants.ORDER_CONFIRMED));
+        return driver.findElement(popupTitle).getText();
     }
 
 

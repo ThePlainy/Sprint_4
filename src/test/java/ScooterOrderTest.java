@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,10 +55,10 @@ public class ScooterOrderTest {
     public static Object[][] getData()  {
         //Структура данных на вход {браузер (из констант), точка входа (из констант), имя, фамилия, адрес, станция метро, номер телефона, дата доставки(в формате ДД.ММ.ГГГГ), срок аренды (числом от 1 до 7), цвет самоката (из констант)}
         return new Object[][]{
-                {Constants.CHROME, Constants.STARTING_HEADER,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Дмитровская", "89126820552", "27.10.2025","3", Constants.GREY},
+                {Constants.FIREFOX, Constants.STARTING_HEADER,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Дмитровская", "89126820552", "27.10.2025","3", Constants.GREY},
                 //{Constants.CHROME, Constants.STARTING_MAIN_PAGE,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Красные Ворота", "89126820552", "27.10.2025","2", Constants.BLACK},
                 //{Constants.CHROME, Constants.STARTING_HEADER,"Дмитрий", "Дмитриенко", "Дмитровское шоссе, 7", "Полянка", "89126820552", "27.10.2025","7", Constants.GREY},
-                {Constants.CHROME, Constants.STARTING_MAIN_PAGE,"Александр", "Лехано", "Алексеевский переулок, 6", "Алексеевская", "88005553535", "29.10.2025","1", Constants.BLACK},
+                {Constants.FIREFOX, Constants.STARTING_MAIN_PAGE,"Александр", "Лехано", "Алексеевский переулок, 6", "Алексеевская", "88005553535", "29.10.2025","1", Constants.BLACK},
         };
     }
 
@@ -92,7 +93,7 @@ public class ScooterOrderTest {
         //Нажатие третьей кнопки подтверждения
         objOrderPage.yesOrderButtonClick();
         //Проверка сообщения о заказе
-        objOrderPage.checkOrderConfirmation();
+        Assert.assertTrue(objOrderPage.getPopupTitle().startsWith(Constants.ORDER_CONFIRMED));
 
 
     }

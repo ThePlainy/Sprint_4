@@ -8,6 +8,7 @@ public class Constants {
     public static final String SCOOTER_MAIN_PAGE = "https://qa-scooter.praktikum-services.ru";
     public static final String STARTING_HEADER = "Header";
     public static final String STARTING_MAIN_PAGE = "Main page";
+    public static final String ORDER_CONFIRMED = "Заказ оформлен";
     public static final int IMPLICIT_WAIT = 60;
     public static final int EXPLICIT_WAIT = 30;
 
